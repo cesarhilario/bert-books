@@ -5,6 +5,7 @@
 /* ==================== RESET ================= */
 *{
     box-sizing: border-box;
+    outline: none;
     font-family: "Lato", sans-serif;
 }
 
@@ -14,6 +15,57 @@ body{
 
 section{
     width: 100%;
+}
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #e6517e;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
 }
 
 /* ================= COMPONENTS =================*/
@@ -202,7 +254,7 @@ section{
     color: #eee;
 }
 
-#location h2{
+#location > h2{
     font-size: 3em;
     font-weight: 300;
     margin: 0.5em;
@@ -217,6 +269,46 @@ section{
 
 #location-content > div{
     width: 50%;
-    background-color: red;
 }
 
+.location-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.location-info h2{
+    font-size: 2.5em;
+}
+
+.location-info h2 img{
+    width: 7%;
+}
+
+.form-address{
+    display: flex;
+    width: 60%;
+}
+
+.form-address input{
+    flex-grow: 1;
+    padding: 10px;
+    border: 2px solid #e6517e;
+    background: transparent;
+    color: #eee;
+}
+
+.form-address button{
+    background: #e6517e;
+    color: #eee;
+    padding: 10px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+}
+
+.form-travel-mode{
+    padding: 20px;
+}

@@ -8,14 +8,14 @@
     <title>Bert Books</title>
     <!-- EXTERNAL FILES -->
     <script src="assets/js/j-less.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD22UWvTETvaeUzOMXgVY2LTzv3SbtWWuY&callback=InitMap" async defer></script>
-
+    
     <!-- OWN FILES -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="shortcut icon" href="assets/img/open-book.png" type="image/x-icon">
     <script src="assets/js/script.js"></script>
 
     <!-- GOOGLE MAPS API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD22UWvTETvaeUzOMXgVY2LTzv3SbtWWuY&callback=InitMap" async defer></script>
 </head>
 
 <body>
@@ -110,8 +110,19 @@
             <div id="map"></div>
             <div class="location-container">
                 <div class="location-info">
-                    <h3>Endereço</h3>
-                    <h2></h2>
+                    <h2><img src="assets/img/locate.svg">Av. Paulista, 1374</h2>
+                    <h3>Como Chegar?</h3>
+                    <div class="form-address">
+                        <input id="ipt-address" type="text" placeholder="Nome da rua, 123, Cidade" value="">
+                        <button id="btnTraceRoute"> Traçar Rota </button>
+                    </div>
+                    <div class="form-travel-mode">
+                        <input type="radio" id="opt1" name="travel-mode" checked>
+                        <label for="opt1"> Transporte Público </label>
+
+                        <input type="radio" id="opt2" name="travel-mode">
+                        <label for="opt2"> Trânsito </label>
+                    </div>
                 </div>
             </div>
         </div>

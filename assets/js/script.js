@@ -1,6 +1,6 @@
 var BookStore = {
     adrress: "Avenida Paulista, 1374",
-    lat: null, lng: null
+    LatLgn: null
 }
 
 var App = {
@@ -10,7 +10,20 @@ var App = {
 
     //Functions
     ApplyEvents: () => {
+        $("#btnTraceRoute").on("click", () => {
+            if(!$("#ipt-address").value == ""){
+                var travelMode = $("#opt1").checked ? 0 : 1;
+                var address = $("#ipt-address").value;
 
+                var origin;
+                GeocodeAddress(address, (results) => {
+                    origin = results[0].geometry.location;
+                    TraceRoute(map, origin, BookStore.LatLgn, travelMode);
+                });
+            }else{
+                alert("Digite um Endereço");
+            }
+        });
     }
 }
 
@@ -19,22 +32,51 @@ let map;
 
 function InitMap(){
     map = new google.maps.Map($("#map"), {
-        center: {lat: 0, lng: 0},
-        zoom: 11
+        zoom: 18
     });
 
-    GeocodeAddress(BookStore.adrress, map);
+    GeocodeAddress(BookStore.adrress, (results) => {
+        BookStore.LatLgn = results[0].geometry.location
+
+        map.setCenter(results[0].geometry.location);
+
+        let marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location,
+            title: "Bert Books"
+        });
+    });
+    
 }
 
-function GeocodeAddress(address, map)  {
+function GeocodeAddress(address, callback)  {
     var geocoder = new google.maps.Geocoder();
 
     geocoder.geocode({"address": address}, (results, status) => {
         if(status == "OK"){
-            console.log(results) ;
+                callback(results);
+            
         }
     });
 }
+
+function TraceRoute(map, origin, destination, _travelMode){
+    var directionsService = new google.maps.DirectionsService();
+    var directionsDisplay = new google.maps.DirectionsRenderer();
+
+    let travelMode = (_travelMode == 0) ? google.maps.DirectionsTravelMode.TRANSIT : google.maps.DirectionsTravelMode.DRIVING;
+    var request = {
+        origin: origin,
+        destination: destination,
+        travelMode : travelMode
+    }
+
+    directionsService.route(request, (response, status) => {
+        directionsDisplay.setDirections(response);
+        directionsDisplay.setMap(map);
+    });
+}
+
 //Init App
 window.onload = () => {
     App.Init();
