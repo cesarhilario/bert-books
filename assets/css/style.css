@@ -1,0 +1,222 @@
+/* ==================== FONTS ====================*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,700,800');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
+
+/* ==================== RESET ================= */
+*{
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+}
+
+body{
+    margin: 0;
+}
+
+section{
+    width: 100%;
+}
+
+/* ================= COMPONENTS =================*/
+/* ---------- LAYOUT ---------- */
+/* Container */
+.container{
+    display: flex;
+}
+
+/* ---------- FILTERS ---------- */
+/* Duetone  */
+.duetone::after, .duetone::before{
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+}
+
+.duetone::before{
+    background-color:#E65100;
+    mix-blend-mode: darken;
+}
+
+.duetone::after{
+    background-color: #1A237E;
+    mix-blend-mode: lighten;
+}
+
+
+/* ================= PAGES =================*/
+/* --------- INDEX.HTML --------- */
+/* Banner */
+#banner{
+    height: calc(100vh - 80px);
+    position: relative;
+
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.banner-arrow{
+    background-color: #e6517e;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%) rotate(45deg);
+    
+}
+
+#banner-background{
+    background: url("../img/man-reading.png") no-repeat;
+    background-position: left bottom;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+#banner-content{
+    z-index: 2;
+    padding: 5%;
+    margin-right: 2%;
+}
+
+#banner-content > h1{ 
+    color: #eee;
+    font-size: 5em;
+    margin: 2% 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: right;
+    font-family: "Montserrat", sans-serif;
+}
+
+#banner-content > h2{
+    color: #eee;
+    font-size: 2em;
+    margin: 0;
+    font-weight: 300;
+    font-family: "Montserrat", sans-serif;
+}
+
+#banner-content > img{
+    margin: 0 auto;
+    display: block;
+    width: 20%;
+}
+
+/* Showcase */
+#showcase-section{
+     background-color: #eee;
+     padding: 100px 2%;
+     text-align: center
+}
+
+#showcase-section > h2{
+    font-size: 3em;
+    font-weight: 300;
+    margin: 0.5em;
+}
+
+.showcase-group{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.showcase{
+    text-align: left;
+    width: 100%;
+    display: inline-block;
+}
+
+.showcase-title{
+    margin: 0;
+    font-size: 2.4em;
+}
+
+.showcase-title::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 6px;
+    background-color: #e6517e;
+}
+
+.showcase-content{
+    padding: 20px 0;
+}
+
+.showcase-full{
+    justify-content: space-between;
+} 
+
+.showcase-full > .showcase-book{
+    width: 19.5%;
+}
+
+.showcase-half{
+    width: 49.5%;
+}
+
+.showcase-half .showcase-book{
+    width: 33%;
+}
+
+.showcase-half .container{
+    justify-content: space-between;
+}
+
+.showcase-book{
+    text-align: center;
+}
+
+.showcase-book > img{
+    width: 100%;
+    user-select: none;
+}
+
+.showcase-book > h4{
+    margin: 10px;
+    font-size: 1em;
+    min-height: 40px;
+}
+
+.showcase-book > button{
+    background: #e6517e;
+    color: #fff;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    font-weight: lighter;
+    font-size: 1.2em;
+    text-transform: uppercase;
+}
+
+/* LOCATION */
+#location{
+    background-color: #212121;
+    padding: 50px 2%;
+    text-align: center;
+    color: #eee;
+}
+
+#location h2{
+    font-size: 3em;
+    font-weight: 300;
+    margin: 0.5em;
+    color: #eee;
+}
+
+#location-content{
+    display:flex;
+    padding: 50px;
+    height: 500px;
+}
+
+#location-content > div{
+    width: 50%;
+    background-color: red;
+}
+
